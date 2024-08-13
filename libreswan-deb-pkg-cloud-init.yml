@@ -1,0 +1,22 @@
+#cloud-init
+#
+# Copyright (c) 2024 Matt Smith
+# MIT License
+#
+# Cloud ........... : Hetzner Cloud (though this may work with your cloud without any changes)
+# Instance Type ... : Shared vCPU, CPX11 (2 vCPU, 2GB RAM)
+# OS .............. : Ubuntu 24.04
+#
+# Description ..... :
+# This downloads the source code for LibreSwan 5.0, creates a .deb package, and serves
+# it up over HTTP/HTTPS for download.
+#
+runcmd:
+  - apt-get update >/dev/tty1 2>&1
+  - apt-get install -y ufw >/dev/tty1 2>&1
+  - ufw enable >/dev/tty1 2>&1
+  - apt-get install -y ufw net-tools make build-essential libnss3-dev pkg-config libevent-dev libunbound-dev bison flex libsystemd-dev libpam0g-dev libcap-ng-dev libldns-dev xmlto devscripts debhelper htmldoc libaudit-dev libcurl4-gnutls-dev libkrb5-dev libldap2-dev libnss3-tools libselinux1-dev man2html po-debconf wget >/dev/tty1 2>&1
+  - apt-get upgrade -y >/dev/null 2>&1
+  - curl -Ls https://raw.githubusercontent.com/mattx86/libreswan-deb-pkg-cloud-init/main/libreswan-deb-pkg-cloud-init.sh -o /root/libreswan-deb-pkg-cloud-init.sh
+  - chmod 700 /root/libreswan-deb-pkg-cloud-init.sh
+  - /root/libreswan-deb-pkg-cloud-init.sh >/dev/tty1 2>&1
