@@ -1,5 +1,5 @@
-# libreswan-deb-pkg-cloud-init
-Create a LibreSwan Debian/Ubuntu Package via a temporary VM/VPS using cloud-init.
+# libreswan-deb-pkg-cloud-config
+Create a LibreSwan Debian/Ubuntu Package via a temporary VM/VPS using cloud-config.
 
 ## How to use
 1. Copy and paste the cloud-init `.yml` contents where applicable for your cloud.  (I make use of Hetzner Cloud, though your cloud may work without any changes necessary.)
