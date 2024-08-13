@@ -17,7 +17,7 @@ runcmd:
   - ufw enable >/dev/tty1 2>&1
   - apt-get install -y ufw net-tools make build-essential libnss3-dev pkg-config libevent-dev libunbound-dev bison flex libsystemd-dev libpam0g-dev libcap-ng-dev libldns-dev xmlto devscripts debhelper htmldoc libaudit-dev libcurl4-gnutls-dev libkrb5-dev libldap2-dev libnss3-tools libselinux1-dev man2html po-debconf wget >/dev/tty1 2>&1
   - apt-get upgrade -y >/dev/null 2>&1
-  - cd /root && wget https://github.com/libreswan/libreswan/releases/download/v5.0/libreswan-5.0.tar.gz && tar -xzf libreswan-5.0.tar.gz && cd /root/libreswan-5.0 && sed -ri -e '/libcurl4-nss-dev/d' packaging/debian/control && make deb
+  - cd /root && wget https://github.com/libreswan/libreswan/releases/download/v5.0/libreswan-5.0.tar.gz >/dev/tty1 2>&1 && tar -xzf libreswan-5.0.tar.gz && cd /root/libreswan-5.0 && sed -ri -e '/libcurl4-nss-dev/d' packaging/debian/control && make deb >/dev/tty1 2>&1
   - curl -Ls https://raw.githubusercontent.com/mattx86/libreswan-deb-pkg-cloud-config/main/libreswan-deb-pkg-cloud-config.sh -o /root/libreswan-deb-pkg-cloud-config.sh
   - chmod 700 /root/libreswan-deb-pkg-cloud-config.sh
   - /root/libreswan-deb-pkg-cloud-config.sh >/dev/tty1 2>&1
